@@ -1,10 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            image 'python:3.9' // Replace with the Python version you need
-            args '-u root' // Run as root to install packages if necessary
-        }
-    }
+    agent any
 
     stages {
         stage('Checkout') {
