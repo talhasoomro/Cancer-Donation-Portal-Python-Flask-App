@@ -1,15 +1,12 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'python:3.9' // Replace with the Python version you need
+            args '-u root' // Run as root to install packages if necessary
+        }
+    }
 
     stages {
-        stage('Python Version') {
-            steps {
-                sh "apt update"
-                sh "apt install -y python3-venv"
-                sh "python3 --version"
-            }
-        }
-
         stage('Checkout') {
             steps {
                 git 'https://github.com/yourusername/your-repo.git'
