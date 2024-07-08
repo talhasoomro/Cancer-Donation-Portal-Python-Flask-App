@@ -10,8 +10,7 @@ pipeline {
 
         stage('Build and Test') {
             steps {
-                sh "python3 -m venv venv"
-                sh "source venv/bin/activate && pip install -r requirements.txt"
+                sh "pip install -r requirements.txt"
                 sh "pytest"
             }
         }
