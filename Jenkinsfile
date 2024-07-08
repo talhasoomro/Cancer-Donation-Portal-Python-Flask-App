@@ -10,8 +10,8 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sh "docker-compose -f docker-compose.prod.yml build"
-                sh "docker-compose -f docker-compose.prod.yml up -d"
+                sh "pip install -r requirements.txt"
+                sh "app.py"
             }
         }
     }
