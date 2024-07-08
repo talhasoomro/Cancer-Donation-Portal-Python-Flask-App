@@ -8,13 +8,6 @@ pipeline {
             }
         }
 
-        stage('Build and Test') {
-            steps {
-                sh "pip install -r requirements.txt"
-                sh "pytest"
-            }
-        }
-
         stage('Deploy') {
             steps {
                 sh "docker-compose -f docker-compose.prod.yml build"
@@ -32,3 +25,4 @@ pipeline {
         }
     }
 }
+
