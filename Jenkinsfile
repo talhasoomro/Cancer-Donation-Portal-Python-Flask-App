@@ -10,6 +10,7 @@ pipeline {
 
         stage('Build and Test') {
             steps {
+                sh "apt install python3.11-venv"
                 sh "python3 -m venv venv"
                 sh "source venv/bin/activate && pip install -r requirements.txt"
                 sh "pytest"
