@@ -2,27 +2,15 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
+        stage('Install Dependencies with pipx') {
             steps {
-                git 'https://github.com/talhasoomro/Cancer-Donation-Portal-Python-Flask-App'
+                script {
+                    // Install dependencies using pipx
+                    sh 'pipx install -r requirements.txt'
+                }
             }
         }
 
-        stage('Deploy') {
-            steps {
-                sh "pip install -r requirements.txt"
-                sh "app.py"
-            }
-        }
-    }
-
-    post {
-        success {
-            echo "Pipeline succeeded! Application deployed."
-        }
-        failure {
-            echo "Pipeline failed. Deployment aborted."
-        }
+        // Add other stages as needed
     }
 }
-
